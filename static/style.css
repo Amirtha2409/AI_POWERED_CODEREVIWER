@@ -1,0 +1,38 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background: #eaeaea;
+    padding: 20px;
+    height: 100vh;
+}
+
+.content {
+    flex: 1;
+    padding: 30px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}

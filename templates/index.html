@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Code Reviewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="sidebar">
+        <h2>AI Code Reviewer</h2>
+
+        <form method="POST">
+            <label>Select File</label>
+            <select name="file">
+                <option value="sample_a.py">sample_a.py</option>
+                <option value="sample_b.py">sample_b.py</option>
+            </select>
+
+            <button type="submit">Scan</button>
+        </form>
+    </div>
+
+    <div class="content">
+        <h2>Code Metrics</h2>
+
+        {% if results %}
+
+        <h3>Coverage: {{ results.coverage }}%</h3>
+
+        <h3>Function Details</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Docstring</th>
+            </tr>
+            {% for f in results.functions %}
+            <tr>
+                <td>{{ f.name }}</td>
+                <td>{{ f.start_line }}</td>
+                <td>{{ f.end_line }}</td>
+                <td>{{ f.has_docstring }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h3>Function Complexity</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Complexity</th>
+                <th>Line</th>
+            </tr>
+            {% for c in results.complexity %}
+            <tr>
+                <td>{{ c.name }}</td>
+                <td>{{ c.complexity }}</td>
+                <td>{{ c.line }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+</html>
